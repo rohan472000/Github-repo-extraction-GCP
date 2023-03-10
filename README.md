@@ -6,7 +6,7 @@ Visulization: Language used in repo, JS is used in most repos.
 ![Screenshot (93)](https://user-images.githubusercontent.com/96521078/224222318-ff8ea175-b60e-436f-aeb1-420c7b1bcbb9.png)
 
 2nd color has no name because in many repos the data fetched for language used is empty/null.
-we can update that null by any name using below command :-
+We can update that null by any name using below command :-
 
       UPDATE `project.dataset.table`
       SET language = 'xyz'
