@@ -12,7 +12,7 @@ We can update that null by any name using below command :-
       SET language = 'xyz'
       WHERE language IS NULL
   
-  -- above `language` is column name.
+  -- in above code, `language` is a column name.
   
   
   
