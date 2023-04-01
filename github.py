@@ -27,7 +27,7 @@ for repo in data['items']:
 
 # Initialize the BigQuery client
 credentials = service_account.Credentials.from_service_account_file
-              ('/home/service.json')
+('/home/service.json')
 
 client = bigquery.Client(credentials=credentials, project='clean-phone-438712')
 
