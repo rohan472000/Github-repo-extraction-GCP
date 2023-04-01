@@ -2,7 +2,7 @@ import requests
 from datetime import datetime
 from google.cloud import bigquery
 from google.oauth2 import service_account
-from google.oauth2.credentials import Credentials
+
 # Make a request to the GitHub API to get the 100 most rated public repositories
 response = requests.get('https://api.github.com/search/repositories?q=stars:>0&sort=stars&per_page=100')
 
@@ -26,7 +26,8 @@ for repo in data['items']:
     repos_data.append((name, description, stars, forks, language, created_date))
 
 # Initialize the BigQuery client
-credentials = service_account.Credentials.from_service_account_file('/home/service.json')
+credentials = service_account.Credentials.from_service_account_file
+              ('/home/service.json')
 
 client = bigquery.Client(credentials=credentials, project='clean-phone-438712')
 
@@ -52,7 +53,8 @@ except:
 
 # Insert the repository data into the BigQuery table
 table = client.get_table(table_ref)
-rows_to_insert = [list(repo_data[0:5]) + [repo_data[5].strftime('%Y-%m-%d')] for repo_data in repos_data]
+rows_to_insert = [list(repo_data[0:5]) + [repo_data[5].strftime('%Y-%m-%d')] 
+                  for repo_data in repos_data]
 errors = client.insert_rows(table, rows_to_insert)
 
 if errors == []:
