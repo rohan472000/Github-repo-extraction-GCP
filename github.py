@@ -2,7 +2,7 @@ import requests
 from datetime import datetime
 from google.cloud import bigquery
 from google.oauth2 import service_account
-from google.oauth2.credentials import Credentials
+
 # Make a request to the GitHub API to get the 100 most rated public repositories
 response = requests.get('https://api.github.com/search/repositories?q=stars:>0&sort=stars&per_page=100')
 
