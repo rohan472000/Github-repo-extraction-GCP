@@ -1,3 +1,7 @@
+"""The Python script retrieves the 100 most starred public repositories from the 
+GitHub API, extracts relevant data, and inserts it into a BigQuery table.
+It requires the requests, google-cloud-bigquery, and google-auth libraries to be installed. 
+The script can be run with a service account key stored in /home/service.json."""
 from datetime import datetime
 
 import requests
@@ -6,7 +10,8 @@ from google.oauth2 import service_account
 
 # Make a request to the GitHub API to get the 100 most rated public repositories
 response = requests.get(
-    "https://api.github.com/search/repositories?q=stars" ":>0&sort=stars&per_page=100"
+    "https://api.github.com/search/repositories?q=stars" ":>0&sort=stars&per_page=100",
+    timeout=10
 )
 
 # Convert the response data to JSON format
