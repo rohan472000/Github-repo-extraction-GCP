@@ -1,7 +1,8 @@
 """The Python script retrieves the 100 most starred public repositories from the 
 GitHub API, extracts relevant data, and inserts it into a BigQuery table.
-It requires the requests, google-cloud-bigquery, and google-auth libraries to be installed. 
-The script can be run with a service account key stored in /home/service.json."""
+It requires the requests, google-cloud-bigquery, and google-auth libraries to be 
+installed. The script can be run with a service account key stored 
+in /home/service.json."""
 from datetime import datetime
 
 import requests
@@ -69,7 +70,7 @@ rows_to_insert = [
 ]
 errors = client.insert_rows(table, rows_to_insert)
 
-if not errors::
+if not errors:
     print("Data inserted into BigQuery successfully!")
 else:
     print(f"Errors occurred while inserting data into BigQuery: {errors}")
