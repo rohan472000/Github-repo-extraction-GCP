@@ -7,10 +7,11 @@ from datetime import datetime
 import requests
 from google.cloud import bigquery
 from google.oauth2 import service_account
+from google.cloud.exceptions import NotFound
 
 # Make a request to the GitHub API to get the 100 most rated public repositories
 response = requests.get(
-    "https://api.github.com/search/repositories?q=stars" ":>0&sort=stars&per_page=100",
+    "https://api.github.com/search/repositories?q=stars:>0&sort=stars&per_page=100",
     timeout=10
 )
 
@@ -57,7 +58,7 @@ table_ref = client.dataset("earthquake").table("table_m")
 # Create the BigQuery table if it doesn't exist
 try:
     client.get_table(table_ref)
-except BaseException:
+except bigquery.NotFound:
     client.create_table(bigquery.Table(table_ref, schema=schema))
 
 # Insert the repository data into the BigQuery table
@@ -68,7 +69,7 @@ rows_to_insert = [
 ]
 errors = client.insert_rows(table, rows_to_insert)
 
-if errors == []:
+if not errors::
     print("Data inserted into BigQuery successfully!")
 else:
     print(f"Errors occurred while inserting data into BigQuery: {errors}")
