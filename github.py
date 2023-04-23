@@ -8,7 +8,6 @@ from datetime import datetime
 import requests
 from google.cloud import bigquery
 from google.oauth2 import service_account
-from google.cloud.exceptions import NotFound
 
 # Make a request to the GitHub API to get the 100 most rated public repositories
 response = requests.get(
