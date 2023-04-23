@@ -8,6 +8,8 @@ from datetime import datetime
 import requests
 from google.cloud import bigquery
 from google.oauth2 import service_account
+from google.cloud import exceptions as bq_exce
+
 
 # Make a request to the GitHub API to get the 100 most rated public repositories
 response = requests.get(
@@ -58,7 +60,7 @@ table_ref = client.dataset("earthquake").table("table_m")
 # Create the BigQuery table if it doesn't exist
 try:
     client.get_table(table_ref)
-except bigquery.NotFound:
+except bq_exce.NotFound:
     client.create_table(bigquery.Table(table_ref, schema=schema))
 
 # Insert the repository data into the BigQuery table
