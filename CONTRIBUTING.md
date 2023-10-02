@@ -8,7 +8,6 @@
 - Use proper file extensions for your file.
 - Don't Copy paste codes from the internet as it will be considered as invalid.
 - Create a new Issue stating what the program does,and a short description of the program if you want to add new programs that does a specific task into the repo.
-- Happy Coding :)
 
 
 ### Contributing Rules
